@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flexbox y Grid</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+/* GRID PRINCIPAL */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+
+.card {
+    background: #2c2c2c;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.demo {
+    display: flex;
+    background: #444;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 5px;
+}
+
+.box {
+    width: 40px;
+    height: 40px;
+    background: #00bcd4;
+}
+
+/* FLEX EJEMPLOS */
+.row { flex-direction: row; }
+.row-reverse { flex-direction: row-reverse; }
+.column { flex-direction: column; }
+
+.center { justify-content: center; }
+.space { justify-content: space-between; }
+
+.align-center { align-items: center; height: 80px; }
+.align-end { align-items: flex-end; height: 80px; }
+
+.wrap { flex-wrap: wrap; width: 120px; }
+
+
+.grid-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.grid-box {
+    background: orange;
+    height: 40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1><strong>Flexbox y Grid</strong> </h1>
+
+<div class="container">
+
+<!-- FLEXBOX -->
+
+<div class="card">
+<h2>flex-direction</h2>
+<p>Controla dirección</p>
+
+<p>row:</p>
+<div class="demo row">
+<div class="box"></div><div class="box"></div><div class="box"></div>
+</div>
+
+<p>column:</p>
+<div class="demo column">
+<div class="box"></div><div class="box"></div><div class="box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>justify-content</h2>
+<p>Alinea horizontal</p>
+
+<p>center:</p>
+<div class="demo center">
+<div class="box"></div><div class="box"></div>
+</div>
+
+<p>space-between:</p>
+<div class="demo space">
+<div class="box"></div><div class="box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>align-items</h2>
+<p>Alinea vertical</p>
+
+<p>center:</p>
+<div class="demo align-center">
+<div class="box"></div><div class="box"></div>
+</div>
+
+<p>end:</p>
+<div class="demo align-end">
+<div class="box"></div><div class="box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>flex-wrap</h2>
+<p>Permite salto de línea</p>
+
+<div class="demo wrap">
+<div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>order</h2>
+<p>Cambia orden</p>
+
+<div class="demo">
+<div class="box" style="order:2;">1</div>
+<div class="box" style="order:1;">2</div>
+</div>
+</div>
+
+<div class="card">
+<h2>flex-grow</h2>
+<p>Elemento crece</p>
+
+<div class="demo">
+<div class="box" style="flex-grow:1;"></div>
+<div class="box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>align-self</h2>
+<p>Alineación individual</p>
+
+<div class="demo" style="height:80px;">
+<div class="box"></div>
+<div class="box" style="align-self:flex-end;"></div>
+</div>
+</div>
+
+<!-- GRID -->
+
+<div class="card">
+<h2>grid-template-columns</h2>
+<p>Define columnas</p>
+
+<div class="grid-demo">
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>fr (fracciones)</h2>
+<p>Divide espacio</p>
+
+<div class="grid-demo" style="grid-template-columns: 2fr 1fr;">
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>grid-gap</h2>
+<p>Espacio entre elementos</p>
+
+<div class="grid-demo" style="gap:15px;">
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>grid-column</h2>
+<p>Elemento ocupa más columnas</p>
+
+<div class="grid-demo">
+<div class="grid-box" style="grid-column: span 2;"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>repeat()</h2>
+<p>Repite columnas</p>
+
+<div class="grid-demo" style="grid-template-columns: repeat(3,1fr);">
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>auto-fit</h2>
+<p>Se adapta al tamaño</p>
+
+<div class="grid-demo" style="grid-template-columns: repeat(auto-fit, minmax(50px,1fr));">
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+<div class="grid-box"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>grid-template-areas</h2>
+<p>Define zonas</p>
+
+<div style="display:grid; grid-template-areas:'a a' 'b c'; gap:5px;">
+<div style="grid-area:a; background:red; height:30px;"></div>
+<div style="grid-area:b; background:blue; height:30px;"></div>
+<div style="grid-area:c; background:green; height:30px;"></div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
