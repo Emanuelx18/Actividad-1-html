@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrusel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .carrusel {
+      position: relative;
+      width: 600px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: flex;
+      width: 300%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 30%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+   
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+  </style>
+</head>
+<body>
+
+<div class="carrusel">
+  <div class="slides" id="slides">
+    <div class="slide"><img src="https://www.billboard.com/wp-content/uploads/2024/02/Messi-2023-billboard-espanol-1548.jpg?w=942&h=628&crop=1"></div>
+    <div class="slide"><img src="https://media.es.wired.com/photos/66c906583b17c97f5bc640a6/16:9/w_2560%2Cc_limit/2158161905"></div>
+    <div class="slide"><img src="https://lh6.googleusercontent.com/proxy/F3gzySaK9lBilUZu5rNA47e6kLbT9rDzrMHrlYTLP6jYFEKpFov1DG9qtyzkk8ckj5bRIzBbZpKX1fsbT2y7fkdWHqqMPQejdYA3LeuwlfV7JAJeVcCJPm5cdj8D0b9h_UNonRDshZluWlU-3xfhvspMPFF0Gg"></div>
+    <div class="slide"><img src="https://s3.amazonaws.com/rtvc-assets-senalcolombia.gov.co/s3fs-public/field/image/pele-rey-futbo..jpg"></div>
+</div>
+
+
+  <button class="btn prev" onclick="prevSlide()">❮</button>
+  <button class="btn next" onclick="nextSlide()">❯</button>
+</div>
+
+<script>
+  let index = 0;
+  const slides = document.getElementById("slides");
+  const totalSlides = 4;
+
+  function showSlide(i) {
+    index = (i + totalSlides) % totalSlides;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextSlide() {
+    showSlide(index + 1);
+  }
+
+  function prevSlide() {
+    showSlide(index - 1);
+  }
+
+  
+  setInterval(() => {
+    nextSlide();
+  }, 6000);
+</script>
+
+</body>
+</html>
